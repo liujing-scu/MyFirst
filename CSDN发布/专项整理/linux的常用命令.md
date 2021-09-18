@@ -412,3 +412,6 @@ du -sh 文件目录
 (3)UUID=XXX  挂载的路径 TYPE defaults 0 2（一定不要 01,01是启动时候用的 ）（4）最后进行挂载：sudo mount -a
 （5）修改权限 chmod 777 路径
 
+# 查看一个文件夹下面有多少文件
+
+ls -l | grep "^-" | wc -l

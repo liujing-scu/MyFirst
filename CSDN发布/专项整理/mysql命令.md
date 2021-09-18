@@ -191,7 +191,9 @@ alter table crawl_raw_chat_test truncate partition p7;
 
 # 新建数据表
 
-
+```
+CREATE TABLE 新表 SELECT * FROM 旧表 WHERE 1=2
+```
 
 # 建立索引
 
@@ -327,3 +329,16 @@ mysql -u用户名 -p密码 -h远程数据库的ip
 
 ![image-20210803113155320](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20210803113155320.png)
 
+# 计算数据表所占的空间
+
+```
+select concat(round(sum(DATA_LENGTH/1024/1024),2),'M') as table_size
+from information_schema.tables
+where table_schema=SCHEMA() AND table_name='crawl_raw_chat';
+```
+
+# 空间优化
+
+```
+optimize table crawl_raw_chat;
+```
